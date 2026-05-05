@@ -75,13 +75,13 @@ $active_group = 'sqlserver';
 $query_builder = TRUE;
 
 $db['sqlserver'] = array(
-	'dsn'	   => '',
-	'hostname' => getenv('DB_HOST') ?: '192.168.1.8\SQLEXPRESS',
+	'dsn'	   => 'dblib:host=' . (getenv('DB_HOST') ?: '192.168.1.8\SQLEXPRESS') . ';dbname=' . (getenv('DB_NAME') ?: 'treportdb'),
+	'hostname' => '',
 	//'hostname' => 'MINDAFINANCE\SQLEXPRESS',
 	'username' => getenv('DB_USER') ?: 'sa',
 	'password' => getenv('DB_PASS') ?: 'minda1234',
-	'database' => getenv('DB_NAME') ?: 'treportdb',
-	'dbdriver' => 'sqlsrv',
+	'database' => '',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => FALSE,
@@ -102,12 +102,12 @@ $db['sqlserver'] = array(
 /* STAGING DATABASE */
 
 $db['sqlserver_staging'] = array(
-	'dsn'			=> '',
-	'hostname' 		=> getenv('DB_STAGING_HOST') ?: '192.168.1.8\SQLEXPRESS',
+	'dsn'			=> 'dblib:host=' . (getenv('DB_STAGING_HOST') ?: '192.168.1.8\SQLEXPRESS') . ';dbname=' . (getenv('DB_STAGING_NAME') ?: 'treport_db_staging'),
+	'hostname' 		=> '',
 	'username' 		=> getenv('DB_STAGING_USER') ?: 'sa',
 	'password' 		=> getenv('DB_STAGING_PASS') ?: 'minda1234',
-	'database' 		=> getenv('DB_STAGING_NAME') ?: 'treport_db_staging',
-	'dbdriver' 		=> 'sqlsrv',
+	'database' 		=> '',
+	'dbdriver' 		=> 'pdo',
 	'dbprefix' 		=> '',
 	'pconnect' 		=> TRUE,
 	'db_debug' 		=> FALSE,
@@ -125,13 +125,13 @@ $db['sqlserver_staging'] = array(
 );
 
 $db['pdsdb'] = array(
-	'dsn'	   => '',
-	'hostname' => getenv('DB_PDS_HOST') ?: '192.168.1.8\SQLEXPRESS',
+	'dsn'	   => 'dblib:host=' . (getenv('DB_PDS_HOST') ?: '192.168.1.8\SQLEXPRESS') . ';dbname=' . (getenv('DB_PDS_NAME') ?: 'pdsdb'),
+	'hostname' => '',
 	//'hostname' => 'MINDAFINANCE\SQLEXPRESS',
 	'username' => getenv('DB_PDS_USER') ?: 'sa',
 	'password' => getenv('DB_PDS_PASS') ?: 'minda1234',
-	'database' => getenv('DB_PDS_NAME') ?: 'pdsdb',
-	'dbdriver' => 'sqlsrv',
+	'database' => '',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => FALSE,

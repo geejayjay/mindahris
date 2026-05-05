@@ -11,7 +11,7 @@ PORT = "9003"
 
 [phases.setup]
 # Core PHP + FreeTDS for MSSQL connectivity + GD for image processing
-nixPkgs = ["php81", "php81Packages.composer", "php81Extensions.pdo", "php81Extensions.mbstring", "php81Extensions.gd", "php81Extensions.curl", "php81Extensions.openssl", "php81Extensions.zip", "freetds", "php81Extensions.sqlsrv", "php81Extensions.pdo_sqlsrv"]
+nixPkgs = ["php81", "php81Packages.composer", "php81Extensions.pdo", "php81Extensions.mbstring", "php81Extensions.gd", "php81Extensions.curl", "php81Extensions.openssl", "php81Extensions.zip", "freetds", "php81Extensions.pdo_dblib"]
 aptPkgs = ["freetds-dev", "freetds-bin", "libsybdb5"]
 
 [phases.install]
