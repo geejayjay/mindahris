@@ -1,0 +1,14 @@
+.git
+.gitignore
+.idea
+*.sublime-*
+nbproject
+node_modules
+hrmis/node_modules
+user_guide
+user_guide_src
+*.sql
+*.md
+*.rst
+contributing.md
+license.txt
