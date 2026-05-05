@@ -32,4 +32,4 @@ cmds = [
 ]
 
 [start]
-cmd = "php-fpm"
+cmd = "php -S 0.0.0.0:${PORT:-9003} -t /app/."
