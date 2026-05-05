@@ -5,13 +5,15 @@ providers = ["php"]
 # Fallback all non-file requests to index.php (replaces .htaccess RewriteRule)
 NIXPACKS_PHP_FALLBACK_PATH = "/index.php"
 # PHP version
-NIXPACKS_PHP_VERSION = "8.1"
+NIXPACKS_PHP_VERSION = "7.4"
 # Use port 9003 instead of 80 (port 80 is used by Traefik)
 PORT = "9003"
+# Set CodeIgniter environment to production
+CI_ENV = "production"
 
 [phases.setup]
 # Core PHP + FreeTDS for MSSQL connectivity + GD for image processing
-nixPkgs = ["php81", "php81Packages.composer", "php81Extensions.pdo", "php81Extensions.mbstring", "php81Extensions.gd", "php81Extensions.curl", "php81Extensions.openssl", "php81Extensions.zip", "freetds", "php81Extensions.pdo_dblib"]
+nixPkgs = ["php74", "php74Packages.composer", "php74Extensions.pdo", "php74Extensions.mbstring", "php74Extensions.gd", "php74Extensions.curl", "php74Extensions.openssl", "php74Extensions.zip", "freetds", "php74Extensions.pdo_dblib"]
 aptPkgs = ["freetds-dev", "freetds-bin", "libsybdb5"]
 
 [phases.install]
