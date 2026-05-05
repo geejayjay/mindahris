@@ -18,7 +18,7 @@ aptPkgs = ["freetds-dev", "freetds-bin", "libsybdb5"]
 dependsOn = ["setup"]
 cmds = [
     # Configure FreeTDS to connect to MSSQL
-    "echo '[global]\n\ttds version = 7.4\n\tclient charset = UTF-8' > /etc/freetds/freetds.conf",
+    "printf '[global]\\n\\ttds version = 7.4\\n\\tclient charset = UTF-8\\n' > /etc/freetds/freetds.conf",
     # Install composer dependencies (if any are added later)
     "if [ -f composer.json ]; then composer install --no-dev --optimize-autoloader --no-interaction; fi"
 ]
