@@ -1,6 +1,6 @@
 .DS_Store
 uploads/
-assets/
+#assets/
 
 application/cache/*
 !application/cache/index.html
