@@ -1,14 +1,44 @@
+# Git
 .git
 .gitignore
+.gitattributes
+
+# IDEs and OS files
 .idea
+.vscode
 *.sublime-*
 nbproject
-node_modules
-hrmis/node_modules
-user_guide
-user_guide_src
+.DS_Store
+Thumbs.db
+
+# Dependencies (Node)
+node_modules/
+hrmis/node_modules/
+
+# CodeIgniter 3 Specifics
+user_guide/
+user_guide_src/
+application/cache/*
+!application/cache/index.html
+application/logs/*
+!application/logs/index.html
+
+# Database Backups & Data
 *.sql
+*.bak
+*.sqlite
+attendancebackup/
+
+# Docs & Configs
 *.md
 *.rst
 contributing.md
 license.txt
+nixpacks.toml
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Environment files (Critical for security!)
+.env
+.env.*
