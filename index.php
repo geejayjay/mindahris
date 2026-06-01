@@ -1,4 +1,28 @@
 <?php
+// Load .env file if it exists at the root of the project
+if (file_exists(__DIR__ . '/.env')) {
+	$lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	foreach ($lines as $line) {
+		$line = trim($line);
+		if (empty($line) || strpos($line, '#') === 0) {
+			continue;
+		}
+		if (strpos($line, '=') !== false) {
+			list($name, $value) = explode('=', $line, 2);
+			$name = trim($name);
+			$value = trim($value);
+			if (preg_match('/^"(.*)"$/', $value, $matches) || preg_match('/^\'(.*)\'$/', $value, $matches)) {
+				$value = $matches[1];
+			}
+			if (getenv($name) === false) {
+				putenv("{$name}={$value}");
+				$_ENV[$name] = $value;
+				$_SERVER[$name] = $value;
+			}
+		}
+	}
+}
+
 ini_set('date.timezone', 'Asia/Manila');
 /**
  * CodeIgniter

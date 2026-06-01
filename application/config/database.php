@@ -74,14 +74,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'sqlserver';
 $query_builder = TRUE;
 
+$db_host = getenv('DB_HOST') ?: '192.168.1.8\SQLEXPRESS';
+$db_port = getenv('DB_PORT') ?: '';
+$db_user = getenv('DB_USER') ?: 'sa';
+$db_pass = getenv('DB_PASS') ?: 'minda1234';
+$db_name = getenv('DB_NAME') ?: 'treportdb';
+$db_driver = getenv('DB_DRIVER') ?: 'mssql';
+
+// Setup 'sqlserver' config
+$sqlserver_dsn = '';
+$sqlserver_hostname = $db_host;
+if ($db_driver === 'pdo') {
+	$host_with_port = $db_host;
+	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
+		$host_with_port .= ',' . $db_port;
+	}
+	$sqlserver_dsn = "dblib:host={$host_with_port};dbname={$db_name};charset=utf8";
+	$sqlserver_hostname = '';
+} else {
+	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
+		$sqlserver_hostname .= ',' . $db_port;
+	}
+}
+
 $db['sqlserver'] = array(
-	'dsn'	   => '',
-	'hostname' => '192.168.1.8\SQLEXPRESS',
-	//'hostname' => 'MINDAFINANCE\SQLEXPRESS',
-	'username' => 'sa',
-	'password' => 'minda1234',
-	'database' => 'treportdb',
-	'dbdriver' => 'mssql',
+	'dsn'	   => $sqlserver_dsn,
+	'hostname' => $sqlserver_hostname,
+	'username' => $db_user,
+	'password' => $db_pass,
+	'database' => $db_name,
+	'dbdriver' => $db_driver,
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => FALSE,
@@ -101,13 +123,29 @@ $db['sqlserver'] = array(
 
 /* STAGING DATABASE */
 
+$db_name_staging = getenv('DB_NAME_STAGING') ?: 'treport_db_staging';
+$staging_dsn = '';
+$staging_hostname = $db_host;
+if ($db_driver === 'pdo') {
+	$host_with_port = $db_host;
+	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
+		$host_with_port .= ',' . $db_port;
+	}
+	$staging_dsn = "dblib:host={$host_with_port};dbname={$db_name_staging};charset=utf8";
+	$staging_hostname = '';
+} else {
+	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
+		$staging_hostname .= ',' . $db_port;
+	}
+}
+
 $db['sqlserver_staging'] = array(
-	'dsn'			=> '',
-	'hostname' 		=> '192.168.1.8\SQLEXPRESS',
-	'username' 		=> 'sa',
-	'password' 		=> 'minda1234',
-	'database' 		=> 'treport_db_staging',
-	'dbdriver' 		=> 'mssql',
+	'dsn'			=> $staging_dsn,
+	'hostname' 		=> $staging_hostname,
+	'username' 		=> $db_user,
+	'password' 		=> $db_pass,
+	'database' 		=> $db_name_staging,
+	'dbdriver' 		=> $db_driver,
 	'dbprefix' 		=> '',
 	'pconnect' 		=> TRUE,
 	'db_debug' 		=> FALSE,
@@ -124,14 +162,29 @@ $db['sqlserver_staging'] = array(
 	'save_queries'  => TRUE
 );
 
+$db_name_pds = getenv('DB_NAME_PDS') ?: 'pdsdb';
+$pds_dsn = '';
+$pds_hostname = $db_host;
+if ($db_driver === 'pdo') {
+	$host_with_port = $db_host;
+	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
+		$host_with_port .= ',' . $db_port;
+	}
+	$pds_dsn = "dblib:host={$host_with_port};dbname={$db_name_pds};charset=utf8";
+	$pds_hostname = '';
+} else {
+	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
+		$pds_hostname .= ',' . $db_port;
+	}
+}
+
 $db['pdsdb'] = array(
-	'dsn'	   => '',
-	'hostname' => '192.168.1.8\SQLEXPRESS',
-	//'hostname' => 'MINDAFINANCE\SQLEXPRESS',
-	'username' => 'sa',
-	'password' => 'minda1234',
-	'database' => 'pdsdb',
-	'dbdriver' => 'mssql',
+	'dsn'	   => $pds_dsn,
+	'hostname' => $pds_hostname,
+	'username' => $db_user,
+	'password' => $db_pass,
+	'database' => $db_name_pds,
+	'dbdriver' => $db_driver,
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => FALSE,

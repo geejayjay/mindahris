@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$config['base_url'] = 'http://192.168.1.57:8080/mindata/';
 //$config['base_url'] = 'http://mindata:8080/';
 //$config['base_url'] = 'http://mindahrms/';
-  $config['base_url'] = 'https://office.minda.gov.ph:9003/';
+  $config['base_url'] = getenv('BASE_URL') ?: 'https://office.minda.gov.ph:9003/';
 //  $config['base_url'] = 'https://192.168.1.9/';
 // $config['base_url'] = 'https://122.2.1.10:9003/';
 //$config['base_url'] = 'http://192.168.1.57:8080/mindata/';
