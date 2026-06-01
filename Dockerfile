@@ -42,14 +42,7 @@ RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf \
     && sed -i 's/<VirtualHost \*:80>/<VirtualHost \*:${PORT}>/g' /etc/apache2/sites-available/000-default.conf
 
 # Set environment variables
-ENV CI_ENV=production
 ENV PORT=9003
-ENV BASE_URL="https://office.minda.gov.ph:9003/"
-ENV DB_HOST="192.168.1.8\SQLEXPRESS"
-ENV DB_PORT=""
-ENV DB_NAME="treportdb"
-ENV DB_USER="sa"
-ENV DB_PASS="minda1234"
 ENV DB_DRIVER="pdo"
 ENV SESS_SAVE_PATH="/var/www/html/application/cache"
 

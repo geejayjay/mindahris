@@ -27,12 +27,16 @@ Class Login_model extends CI_Model{
 
             $query = $DB2->query($query);
 			
-			if (count($query->result())==0) {
+			if ($query === FALSE || count($query->result())==0) {
 				$q = "SELECT 1 as success , u.employee_id as employee_id , u.username , u.usertype, u.isfirsttime FROM users u
                       WHERE u.e_add like '%{$username}%' AND u.password = '{$password}'
                       ";
 					  
 				$query = $DB2->query($q);
+			}
+			
+			if ($query === FALSE) {
+				return array();
 			}
 			
             $result = $this->main_model->array_utf8_encode_recursive($query->result());
@@ -74,6 +78,10 @@ Class Login_model extends CI_Model{
                       ";
 
           $query = $DB2->query($query);
+
+          if ($query === FALSE) {
+              return array();
+          }
 
           $result = $this->main_model->array_utf8_encode_recursive($query->result());
           return $result;

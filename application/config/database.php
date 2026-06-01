@@ -87,8 +87,8 @@ $sqlserver_dsn = '';
 $sqlserver_hostname = $db_host;
 if ($db_driver === 'pdo') {
 	$host_with_port = $db_host;
-	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
-		$host_with_port .= ',' . $db_port;
+	if (!empty($db_port) && strpos($db_host, ':') === false) {
+		$host_with_port .= ':' . $db_port;
 	}
 	$sqlserver_dsn = "dblib:host={$host_with_port};dbname={$db_name};charset=utf8";
 	$sqlserver_hostname = '';
@@ -129,8 +129,8 @@ $staging_dsn = '';
 $staging_hostname = $db_host;
 if ($db_driver === 'pdo') {
 	$host_with_port = $db_host;
-	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
-		$host_with_port .= ',' . $db_port;
+	if (!empty($db_port) && strpos($db_host, ':') === false) {
+		$host_with_port .= ':' . $db_port;
 	}
 	$staging_dsn = "dblib:host={$host_with_port};dbname={$db_name_staging};charset=utf8";
 	$staging_hostname = '';
@@ -168,8 +168,8 @@ $pds_dsn = '';
 $pds_hostname = $db_host;
 if ($db_driver === 'pdo') {
 	$host_with_port = $db_host;
-	if (!empty($db_port) && strpos($db_host, ':') === false && strpos($db_host, ',') === false) {
-		$host_with_port .= ',' . $db_port;
+	if (!empty($db_port) && strpos($db_host, ':') === false) {
+		$host_with_port .= ':' . $db_port;
 	}
 	$pds_dsn = "dblib:host={$host_with_port};dbname={$db_name_pds};charset=utf8";
 	$pds_hostname = '';
