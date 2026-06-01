@@ -80,27 +80,27 @@
 
 					// create session
 						// ==============================================================================
-							$_SESSION['employee_id'] 			= $query[0]->employee_id;
-							$_SESSION['username'] 				= $query[0]->Username;
-							$_SESSION['usertype'] 				= $query[0]->usertype;
-							$_SESSION['full_name'] 				= $query[0]->f_name;
-							$_SESSION['first_name'] 			= $query[0]->firstname;
-							$_SESSION['last_name'] 				= $query[0]->l_name;
-							$_SESSION['biometric_id'] 			= $query[0]->biometric_id;
-							$_SESSION['area_id'] 				= $query[0]->area_id;
-							$_SESSION['area_name']				= $query[0]->area_name;
-							$_SESSION['ip_address'] 			= $_SERVER["REMOTE_ADDR"];
-							$_SESSION['is_logged_in'] 			= TRUE;
-							$_SESSION['database_default'] 		= 'sqlserver';
-							$_SESSION['employment_type'] 		= $query[0]->employment_type;
-							$_SESSION['employee_image']			= $query[0]->employee_image;
-							$_SESSION['level_sub_pap_div'] 		= $query[0]->Level_sub_pap_div;
-							$_SESSION['division_id'] 			= $query[0]->Division_id;
-							$_SESSION['dbm_sub_pap_id'] 		= $query[0]->DBM_Pap_id;
-							$_SESSION['is_head'] 			    = $query[0]->is_head;
-							$_SESSION['office_division_name']   = $query[0]->office_division_name;
-							$_SESSION['position_name'] 			= $query[0]->position_name;
-							$_SESSION['isfocal'] 			    = $query[0]->isfocal;
+							$this->session->set_userdata('employee_id', $query[0]->employee_id);
+							$this->session->set_userdata('username', $query[0]->Username);
+							$this->session->set_userdata('usertype', $query[0]->usertype);
+							$this->session->set_userdata('full_name', $query[0]->f_name);
+							$this->session->set_userdata('first_name', $query[0]->firstname);
+							$this->session->set_userdata('last_name', $query[0]->l_name);
+							$this->session->set_userdata('biometric_id', $query[0]->biometric_id);
+							$this->session->set_userdata('area_id', $query[0]->area_id);
+							$this->session->set_userdata('area_name', $query[0]->area_name);
+							$this->session->set_userdata('ip_address', $_SERVER["REMOTE_ADDR"]);
+							$this->session->set_userdata('is_logged_in', TRUE);
+							$this->session->set_userdata('database_default', 'sqlserver');
+							$this->session->set_userdata('employment_type', $query[0]->employment_type);
+							$this->session->set_userdata('employee_image', $query[0]->employee_image);
+							$this->session->set_userdata('level_sub_pap_div', $query[0]->Level_sub_pap_div);
+							$this->session->set_userdata('division_id', $query[0]->Division_id);
+							$this->session->set_userdata('dbm_sub_pap_id', $query[0]->DBM_Pap_id);
+							$this->session->set_userdata('is_head', $query[0]->is_head);
+							$this->session->set_userdata('office_division_name', $query[0]->office_division_name);
+							$this->session->set_userdata('position_name', $query[0]->position_name);
+							$this->session->set_userdata('isfocal', $query[0]->isfocal);
 						// ==============================================================================
 					// end creation of session 
 					
