@@ -51,5 +51,6 @@ ENV DB_NAME="treportdb"
 ENV DB_USER="sa"
 ENV DB_PASS="minda1234"
 ENV DB_DRIVER="pdo"
+ENV SESS_SAVE_PATH="/var/www/html/application/cache"
 
 EXPOSE 9003
