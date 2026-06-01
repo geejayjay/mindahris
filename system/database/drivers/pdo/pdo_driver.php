@@ -290,6 +290,10 @@ class CI_DB_pdo_driver extends CI_DB {
 	public function error()
 	{
 		$error = array('code' => '00000', 'message' => '');
+		if ( ! is_object($this->conn_id))
+		{
+			return $error;
+		}
 		$pdo_error = $this->conn_id->errorInfo();
 
 		if (empty($pdo_error[0]))
