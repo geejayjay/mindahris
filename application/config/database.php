@@ -80,6 +80,7 @@ $db_user = getenv('DB_USER') ?: 'sa';
 $db_pass = getenv('DB_PASS') ?: 'minda1234';
 $db_name = getenv('DB_NAME') ?: 'treportdb';
 $db_driver = getenv('DB_DRIVER') ?: 'mssql';
+$db_debug = (getenv('DB_DEBUG') === 'true' || getenv('DB_DEBUG') === '1');
 
 // Setup 'sqlserver' config
 $sqlserver_dsn = '';
@@ -106,7 +107,7 @@ $db['sqlserver'] = array(
 	'dbdriver' => $db_driver,
 	'dbprefix' => '',
 	'pconnect' => TRUE,
-	'db_debug' => FALSE,
+	'db_debug' => $db_debug,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',	
@@ -148,7 +149,7 @@ $db['sqlserver_staging'] = array(
 	'dbdriver' 		=> $db_driver,
 	'dbprefix' 		=> '',
 	'pconnect' 		=> TRUE,
-	'db_debug' 		=> FALSE,
+	'db_debug' 		=> $db_debug,
 	'cache_on' 		=> FALSE,
 	'cachedir' 		=> '',
 	'char_set' 		=> 'utf8',	
@@ -187,7 +188,7 @@ $db['pdsdb'] = array(
 	'dbdriver' => $db_driver,
 	'dbprefix' => '',
 	'pconnect' => TRUE,
-	'db_debug' => FALSE,
+	'db_debug' => $db_debug,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',	
