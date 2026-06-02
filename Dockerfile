@@ -26,6 +26,14 @@ RUN pecl install mcrypt-1.0.4 \
 RUN docker-php-ext-configure pdo_dblib --with-libdir=/lib/x86_64-linux-gnu \
     && docker-php-ext-install pdo_dblib gd zip
 
+# Fix PHP session settings for reverse-proxy (Cloudflare) environment
+RUN { \
+    echo 'session.use_strict_mode = 0'; \
+    echo 'session.cookie_samesite = Lax'; \
+    echo 'session.cookie_secure = 0'; \
+    echo 'session.cookie_httponly = 1'; \
+    } > /usr/local/etc/php/conf.d/session-fix.ini
+
 # Set working directory
 WORKDIR /var/www/html
 

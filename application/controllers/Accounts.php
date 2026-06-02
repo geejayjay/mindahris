@@ -19,7 +19,7 @@
 
 			if ($this->session->userdata('is_logged_in') == TRUE) {
 				if ($is_debug) { log_message('debug', '[LOGIN] Already logged in, redirecting to base_url: ' . base_url()); }
-				redirect(base_url(),"refresh");
+				redirect(base_url());
 			}
 			
 			$data['err'] = null;
@@ -130,7 +130,7 @@
 								log_message('debug', '[LOGIN] Step 8c: Redirecting to: ' . base_url());
 							}
 
-							redirect(base_url(),"refresh");
+							redirect(base_url());
 						}
 					}
 				}
@@ -156,7 +156,7 @@
 
 		    $this->session->sess_destroy();
 
-			redirect('/accounts/login/', 'refresh');
+			redirect('/accounts/login/');
 		}
 		
 		public function checklogin() {
