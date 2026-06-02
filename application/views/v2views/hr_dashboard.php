@@ -105,7 +105,6 @@
 								<i class="fas fa-eraser"></i>
 							</ul>
 						</li-->
-						<?php// endif; ?>
 						<?php if(!$admin): ?>
 							<!--li> <p data-link='<?php // echo $http; ?>/hr/dtr'> <i class="fa fa-wpforms" aria-hidden="true"></i> My DTR </p> </li-->
 						<?php endif; ?>
