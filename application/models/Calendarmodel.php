@@ -190,4 +190,3 @@
 			return stripos($offsetInSecs, '-') === false ? "+{$hoursAndSec}" : "-{$hoursAndSec}"; 
 		} 
 	} 
-?>

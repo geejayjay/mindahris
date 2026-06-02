@@ -92,4 +92,3 @@ Class Login_model extends CI_Model{
 }
 
 
-?>

@@ -24,4 +24,3 @@
 			$writer->save('Hostel_records.xlsx');
 		}
 	}
-?>

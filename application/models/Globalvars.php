@@ -11,4 +11,3 @@
 			$this->emptype	  = $this->session->userdata('employment_type');	
 		}
 	}
-?>

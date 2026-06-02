@@ -1588,19 +1588,3 @@ e.f_name, p.position_name, d.Division_Desc, e.gender, e.employment_type, e.DBM_P
 		}
 		
 	}
-	
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

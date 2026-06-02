@@ -20,4 +20,3 @@
 			$this->response($data, REST_Controller::HTTP_OK);
 		}
 	}
-?>
