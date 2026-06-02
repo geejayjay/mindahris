@@ -34,9 +34,8 @@
 				<i class="fa fa-file-archive-o" aria-hidden="true"></i> 
 					<span> HR: DTR for Review </span>
 				</li>
-		<?php } //else { ?>
-			<!--li class='hradmin hr-admin-btn' data-href='<?php //echo $url; ?>/my/dashboard'/> <i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp; Personal </li-->
-		<?php// } ?>	
+		<?php } ?>
+			<!--li class='hradmin hr-admin-btn' data-href='<?php // echo $url; ?>/my/dashboard'/> <i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp; Personal </li-->	
 		<li class='hradmin cabinet-btn' data-href='<?php echo $url; ?>'> 
 			<i class="fa fa-archive" aria-hidden="true"></i> 
 				<span> Leave Cabinet </span>

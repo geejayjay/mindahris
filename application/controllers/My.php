@@ -3699,4 +3699,3 @@
 			echo date("h:i", strtotime("+1 hour +47 minutes", strtotime("7:3")));
 		}
 	}
-?>                                                                                                                                                                                            
