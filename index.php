@@ -24,6 +24,8 @@ if (file_exists(__DIR__ . '/.env')) {
 }
 
 ini_set('date.timezone', 'Asia/Manila');
+ini_set('session.sid_length', '40');
+ini_set('session.sid_bits_per_character', '4');
 /**
  * CodeIgniter
  *

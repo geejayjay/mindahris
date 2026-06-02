@@ -26,12 +26,14 @@ RUN pecl install mcrypt-1.0.4 \
 RUN docker-php-ext-configure pdo_dblib --with-libdir=/lib/x86_64-linux-gnu \
     && docker-php-ext-install pdo_dblib gd zip
 
-# Fix PHP session settings for reverse-proxy (Cloudflare) environment
+# Fix PHP session settings for reverse-proxy (Cloudflare) environment and CodeIgniter 3 session ID length compatibility
 RUN { \
     echo 'session.use_strict_mode = 0'; \
     echo 'session.cookie_samesite = Lax'; \
     echo 'session.cookie_secure = 0'; \
     echo 'session.cookie_httponly = 1'; \
+    echo 'session.sid_length = 40'; \
+    echo 'session.sid_bits_per_character = 4'; \
     } > /usr/local/etc/php/conf.d/session-fix.ini
 
 # Set working directory

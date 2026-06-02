@@ -218,7 +218,7 @@
 			echo 'Writable: ' . (is_writable($save_path) ? 'YES' : 'NO') . "\n";
 			echo 'Permissions: ' . substr(sprintf('%o', fileperms($save_path)), -4) . "\n";
 			// List session files
-			$files = glob($save_path . '/ci_session*');
+			$files = glob($save_path . '/cisession*');
 			echo 'Session files found: ' . count($files) . "\n";
 			if (count($files) > 0) {
 				echo 'Recent files: ' . "\n";
