@@ -167,9 +167,9 @@
 			var val = this.value;
 			
 			if (val == 'to') {
-				window.location.href = "https://office.minda.gov.ph:9003/verify/travelorder/";
+				window.location.href = "<?php echo base_url(); ?>verify/travelorder/";
 			} else {
-				window.location.href = "https://office.minda.gov.ph:9003/verify";
+				window.location.href = "<?php echo base_url(); ?>verify";
 			}
 		});	
 	}

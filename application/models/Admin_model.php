@@ -64,7 +64,7 @@ Class Admin_model extends CI_Model{
 
 		function getdtrformat(){
 
-			$header = "http://localhost/treport/admin/printprev";
+			$header = base_url() . "admin/printprev";
 			$footer = "Footer";
 
 			return  array('header' => $header , 'footer' => $footer);

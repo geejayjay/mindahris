@@ -1,7 +1,7 @@
 // written by alvin
 
 var r = $;
-var link = "https://office.minda.gov.ph:9003";
+var link = (typeof BASE_URL !== 'undefined' ? BASE_URL : window.location.origin + '/').replace(/\/+$/, '');
 var emp = new Object();
 	emp.id 	  = null;
 	emp.div   = null;

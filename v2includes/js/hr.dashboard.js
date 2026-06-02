@@ -16,9 +16,8 @@ $(document).ready(function(){
 window.onload = function() {
 	// load the DTR window right after all doms in the browser are loaded.
 		// ======== important ============
-			$("#element_loader").text("loading...");
-			// $("#element_loader").load("http://office.minda.gov.ph:9003/hr/dtr");
-			$("#element_loader").load("https://office.minda.gov.ph:9003/hr/employees");
+			var base = (typeof BASE_URL !== 'undefined' ? BASE_URL : window.location.origin + '/').replace(/\/+$/, '');
+			$("#element_loader").load(base + "/hr/employees");
 			$(".hr_main_navs ul li").eq(9).addClass("liselected")
 		// ======== important ============
 	// end

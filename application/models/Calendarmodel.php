@@ -20,6 +20,7 @@
 		public $googleOauthURL;
 
 		function __construct($params = array()) { 
+			$this->redirect_uri = base_url() . "Googlecalendar/startsync";
 			if (count($params) > 0){ 
 				$this->initialize($params);         
 			}

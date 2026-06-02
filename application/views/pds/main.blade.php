@@ -9,7 +9,7 @@
 			$id = $this->Mainprocs->get_pidn();
 			
 			if ($id != null) {
-				echo "<a href='https://office.minda.gov.ph:9003/accounts/logout' class='thehome' style='font-size: 16px; margin-top: 6px; margin-right: 12px;'>Logout</a>";
+				echo "<a href='" . base_url() . "accounts/logout' class='thehome' style='font-size: 16px; margin-top: 6px; margin-right: 12px;'>Logout</a>";
 			}
 		?>
 	</h3>

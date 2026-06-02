@@ -97,7 +97,7 @@
 		<h2> You are not logged in </h2>
 		<h5> please use your HRIS account to login </h5>
 		<hr/>
-			<a href='https://office.minda.gov.ph:9003/accounts/login' target='_blank'> Login </a>
+			<a href='<?php echo base_url(); ?>accounts/login' target='_blank'> Login </a>
 		<br/>
 		<br/>
 		<br/>

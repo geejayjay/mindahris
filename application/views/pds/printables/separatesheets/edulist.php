@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<link rel="stylesheet" href="https://office.minda.gov.ph:9003//v2includes/pds/style/printstyle.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>v2includes/pds/style/printstyle.css">
 	</head>
 	<body>
 		<table class="pi2">

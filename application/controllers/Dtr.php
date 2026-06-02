@@ -218,6 +218,7 @@
 			
 			if ($ret) {
 				// notify the HR
+				$baseurl = base_url();
 				
 				$to_hr = "<html>
 							<body style='font-family:calibri; background: #d6d2d2;'>
@@ -230,7 +231,7 @@
 									<div role='header' style='padding: 13px;
 							border-bottom: 1px solid #ccc; background: #72d1ff;'>
 										<div style='text-align: center;'> 
-										<img src='https://office.minda.gov.ph:9003/assets/images/approved.png'>
+										<img src='{$baseurl}assets/images/approved.png'>
 										</div>
 										<p style='    text-align: center;
 							font-size: 25px;
@@ -264,7 +265,7 @@
 									<div role='header' style='padding: 13px;
 							border-bottom: 1px solid #45a49d; background: #72d1ff;'>
 										<div style='text-align: center;'> 
-										<img src='https://office.minda.gov.ph:9003/assets/images/approved.png'>
+										<img src='{$baseurl}assets/images/approved.png'>
 										</div>
 										<p style='text-align: center;
 							font-size: 25px;
@@ -281,7 +282,7 @@
 										</p>
 									</div>
 									<div role='footer' style='text-align:center; border-top: 1px solid #ccc;'>
-										<a href='https://office.minda.gov.ph:9003' style=' text-decoration: none; color: #427b96;'> <p style='    margin: 0px;
+										<a href='{$baseurl}' style=' text-decoration: none; color: #427b96;'> <p style='    margin: 0px;
 							padding: 20px;
 							font-size: 14px;
 							background: #d8e6ec;'> LOGIN </p> </a>

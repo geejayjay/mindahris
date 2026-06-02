@@ -30,7 +30,7 @@
 							<?php //if (isset($accomplishments)): ?> 
 								<?php 
 									if (isset($notloggedin) && $notloggedin == true) {
-										echo "<script src='https://office.minda.gov.ph:9003/assets_new/plugins/jQuery/jquery-2.2.3.min.js'></script>";
+										echo "<script src='" . base_url() . "assets_new/plugins/jQuery/jquery-2.2.3.min.js'></script>";
 									}
 								?>
 									<script>

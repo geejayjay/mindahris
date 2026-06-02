@@ -312,8 +312,9 @@ lm(document).ready(function() {
 					// console.log("<table>"+toprint+"</table>");
 					
 					printwindow.document.write("<html><head><title> Printing </title>");
-					//	printwindow.document.write("<link rel='stylesheet' href='https://office.minda.gov.ph:9003/v2includes/style/leavemgt.style.css'/>");
-						printwindow.document.write("<link rel='stylesheet' href='https://office.minda.gov.ph:9003/v2includes/style/printwindow.css'/>");
+						var base = typeof BASE_URL !== 'undefined' ? BASE_URL : window.location.origin + '/';
+					//	printwindow.document.write("<link rel='stylesheet' href='" + base + "v2includes/style/leavemgt.style.css'/>");
+						printwindow.document.write("<link rel='stylesheet' href='" + base + "v2includes/style/printwindow.css'/>");
 					printwindow.document.write("</head>");
 					printwindow.document.write("<body>");
 						printwindow.document.write(toprint);
