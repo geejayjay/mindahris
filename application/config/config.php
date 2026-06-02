@@ -228,7 +228,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = (getenv('DB_DEBUG') === 'true' || getenv('DB_DEBUG') === '1') ? 4 : 0;
 
 /*
 |--------------------------------------------------------------------------
