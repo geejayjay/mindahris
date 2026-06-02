@@ -278,6 +278,28 @@
 			echo 'HTTPS: ' . ($_SERVER['HTTPS'] ?? 'not set') . "\n";
 			echo '</pre>';
 
+			// 8. Database Listing Diagnostic
+			echo '<h3 style="color:#ffd700;">8. Production Databases</h3>';
+			echo '<pre>';
+			try {
+				$DB2 = $this->load->database('sqlserver', TRUE);
+				if ($DB2 && $DB2->conn_id) {
+					$db_query = $DB2->query("SELECT name FROM sys.databases");
+					if ($db_query) {
+						foreach ($db_query->result() as $row) {
+							echo " - " . $row->name . "\n";
+						}
+					} else {
+						echo "Could not query sys.databases.\n";
+					}
+				} else {
+					echo "Could not connect to database.\n";
+				}
+			} catch (Exception $db_err) {
+				echo "Error: " . $db_err->getMessage() . "\n";
+			}
+			echo '</pre>';
+
 			echo '</body></html>';
 		}
 
