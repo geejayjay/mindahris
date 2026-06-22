@@ -80,14 +80,14 @@
 		<div class='thesmethod'>
 			<form method='post' name='categoryform'>
 				<select name='categorytype' id='categoryselect'>
-					<option value= 'ps' <?php echo ($data['ct']=='ps')?"selected":""; ?>> Pass slip </option>
-					<option value='lvcto' <?php echo ($data['ct']=='lvcto')?"selected":""; ?>> Leave/CTO </option>
-					<option value='ot' <?php echo ($data['ct']=='ot')?"selected":""; ?>> Overtime </option>
-					<option value='paf' <?php echo ($data['ct']=='paf')?"selected":""; ?>> Paf </option>
-					<option value='dtr' <?php echo ($data['ct']=='dtr')?"selected":""; ?>> DTR </option>
-					<option value='to' <?php echo ($data['ct']=='to')?"selected":""; ?>> Travel Order </option>
+					<option value= 'ps' <?php echo (isset($data['ct']) && $data['ct']=='ps')?"selected":""; ?>> Pass slip </option>
+					<option value='lvcto' <?php echo (isset($data['ct']) && $data['ct']=='lvcto')?"selected":""; ?>> Leave/CTO </option>
+					<option value='ot' <?php echo (isset($data['ct']) && $data['ct']=='ot')?"selected":""; ?>> Overtime </option>
+					<option value='paf' <?php echo (isset($data['ct']) && $data['ct']=='paf')?"selected":""; ?>> Paf </option>
+					<option value='dtr' <?php echo (isset($data['ct']) && $data['ct']=='dtr')?"selected":""; ?>> DTR </option>
+					<option value='to' <?php echo (isset($data['ct']) && $data['ct']=='to')?"selected":""; ?>> Travel Order </option>
 				</select>
-				<input type='text' name='thebarcode' placeholder='Barcode ex. 20931-32-3292' value='<?php echo $data['bc']; ?>'/>
+				<input type='text' name='thebarcode' placeholder='Barcode ex. 20931-32-3292' value='<?php echo isset($data['bc']) ? $data['bc'] : ''; ?>'/>
 			</form>
 		</div>
 		
