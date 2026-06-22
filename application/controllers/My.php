@@ -1122,7 +1122,7 @@
 				echo 'Error: ' . $_FILES['file']['error'] . '<br>';
 			}
 			else {
-				move_uploaded_file($_FILES['file']['tmp_name'], base_url().'assets/documents/' . $_FILES['file']['name']);
+				move_uploaded_file($_FILES['file']['tmp_name'], './assets/documents/' . $_FILES['file']['name']);
 			}
 			echo json_encode("uploaded");
 
