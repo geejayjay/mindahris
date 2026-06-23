@@ -183,7 +183,7 @@
 	        $csv = array(null, null);
 
 	        $config['allowed_types'] = 'csv';
-	        $config['upload_path'] = './assets/import/';
+	        $config['upload_path'] = FCPATH . 'assets/import/';
 	        $config['max_size']	= '900000';
 	        $config['file_name'] = 'emp_upload' . time();
 
@@ -367,7 +367,7 @@
 			$success = 0;
 
 				for($i=0; $i<count($_FILES['file']['name']); $i++){
-				    $dir_path = "./assets/profiles/";
+				    $dir_path = FCPATH . "assets/profiles/";
 				    if (!is_dir($dir_path)) {
 				        mkdir($dir_path, 0777, true);
 				    }
@@ -395,7 +395,7 @@
 			$success = 0;
 
 				for($i=0; $i<count($_FILES['file']['name']); $i++){
-				    $dir_path = "./assets/esignatures/";
+				    $dir_path = FCPATH . "assets/esignatures/";
 				    if (!is_dir($dir_path)) {
 				        mkdir($dir_path, 0777, true);
 				    }

@@ -412,7 +412,7 @@
 			$success = 0;
 
 				for($i=0; $i<count($_FILES['file']['name']); $i++){
-				    $dir_path = $_SERVER['DOCUMENT_ROOT']."/assets/attachments/";
+				    $dir_path = FCPATH . "assets/attachments/";
 				    if (!is_dir($dir_path)) {
 				        mkdir($dir_path, 0777, true);
 				    }
@@ -444,7 +444,7 @@
 	        $csv = array(null, null);
 
 	        $config['allowed_types'] = 'csv';
-	        $config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/assets/import/';
+	        $config['upload_path'] = FCPATH . 'assets/import/';
 	        $config['max_size']	= '9000000';
 	        $config['file_name'] = 'att_upload' . time();
 
