@@ -172,7 +172,27 @@
 			    var fileName = args.file;
 			    var serverResponce = args.response;
 
-			    obj = JSON.parse(serverResponce);
+			    try {
+			        obj = JSON.parse(serverResponce);
+			    } catch (e) {
+			        $('#import_msg_row').show();
+			        var className = $('#import_msg').attr('class');
+			        $('#import_msg').removeClass(className);
+			        $('#import_msg').addClass('alert alert-danger');
+			        $('#import_msg').html('Invalid server response.');
+			        $('#label_fields').hide();
+			        return;
+			    }
+
+			    if (obj.status === 'error') {
+			        $('#import_msg_row').show();
+			        var className = $('#import_msg').attr('class');
+			        $('#import_msg').removeClass(className);
+			        $('#import_msg').addClass('alert alert-danger');
+			        $('#import_msg').html(obj.message || 'Upload failed.');
+			        $('#label_fields').hide();
+			        return;
+			    }
 
 			    employeefields = obj['employeefields']
 

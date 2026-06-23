@@ -412,10 +412,13 @@
 			$success = 0;
 
 				for($i=0; $i<count($_FILES['file']['name']); $i++){
-				    $target_path = $_SERVER['DOCUMENT_ROOT']."/assets/attachments/";
+				    $dir_path = $_SERVER['DOCUMENT_ROOT']."/assets/attachments/";
+				    if (!is_dir($dir_path)) {
+				        mkdir($dir_path, 0777, true);
+				    }
 				    $ext = explode('.', basename( $_FILES['file']['name'][$i]));
 				    $new_File_name = md5(uniqid()) . "." . $ext[count($ext)-1]; 
-				    $target_path = $target_path . $new_File_name;
+				    $target_path = $dir_path . $new_File_name;
 
 				    if(move_uploaded_file($_FILES['file']['tmp_name'][$i], $target_path)) {
 
@@ -423,7 +426,7 @@
 				    	$success = 1;
 				       
 				    } else{
-				        //echo "There was an error uploading the file, please try again! <br />";
+				        log_message('error', '[UPLOAD ATTACHMENT] Failed to move uploaded file to: ' . $target_path);
 				    }
 				}
 
@@ -436,15 +439,27 @@
 
 		function uploadattendance(){
 		    
-	        $status = '';
-	        $msg = '';
+	        $status = 'error';
+	        $msg = 'No file uploaded or file upload error.';
+	        $csv = array(null, null);
 
 	        $config['allowed_types'] = 'csv';
 	        $config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/assets/import/';
 	        $config['max_size']	= '9000000';
 	        $config['file_name'] = 'att_upload' . time();
 
+	        if (!is_dir($config['upload_path'])) {
+	            mkdir($config['upload_path'], 0777, true);
+	        }
+
 	        $this->load->library('upload', $config);
+
+	        if (empty($_FILES)) {
+	            $msg = 'No file was submitted for upload.';
+	            log_message('error', '[UPLOAD ATTENDANCE] Upload failed: ' . $msg);
+	            echo json_encode(array('status' => 'error', 'message' => $msg));
+	            return;
+	        }
 
 	        foreach($_FILES as $field => $file)
 	        {
@@ -457,15 +472,55 @@
 	                    $status = 'success';
 	                    $msg = $data['file_name'];
 
-	                   $csv = $this->ImportCSV2Array($data['full_path']);
+	                    $csv = $this->ImportCSV2Array($data['full_path']);
 	                }
 	                else
 	                {
 	                    $status = 'error';
-	                    $error = "Invalid File!";
-	                    $msg = $error;
+	                    $msg = $this->upload->display_errors('', '');
 	                }
 	            }
+	            else
+	            {
+	                $status = 'error';
+	                switch ($file['error']) {
+	                    case UPLOAD_ERR_INI_SIZE:
+	                    case UPLOAD_ERR_FORM_SIZE:
+	                        $msg = 'The uploaded file exceeds the maximum allowed size.';
+	                        break;
+	                    case UPLOAD_ERR_PARTIAL:
+	                        $msg = 'The file was only partially uploaded.';
+	                        break;
+	                    case UPLOAD_ERR_NO_FILE:
+	                        $msg = 'No file was uploaded.';
+	                        break;
+	                    case UPLOAD_ERR_NO_TMP_DIR:
+	                        $msg = 'Missing temporary folder on server.';
+	                        break;
+	                    case UPLOAD_ERR_CANT_WRITE:
+	                        $msg = 'Failed to write file to disk.';
+	                        break;
+	                    case UPLOAD_ERR_EXTENSION:
+	                        $msg = 'A PHP extension stopped the file upload.';
+	                        break;
+	                    default:
+	                        $msg = 'Unknown upload error (code: ' . $file['error'] . ').';
+	                        break;
+	                }
+	            }
+	        }
+
+	        if ($status === 'error') {
+	            log_message('error', '[UPLOAD ATTENDANCE] Upload failed: ' . $msg);
+	            echo json_encode(array('status' => 'error', 'message' => $msg));
+	            return;
+	        }
+
+	        if (empty($csv[0]) || empty($csv[1])) {
+	            $msg = 'The uploaded CSV file is empty or has invalid formatting.';
+	            log_message('error', '[UPLOAD ATTENDANCE] CSV parse failed: ' . $msg);
+	            echo json_encode(array('status' => 'error', 'message' => $msg));
+	            return;
 	        }
 
 	      $getcheckinoutfields = $this->admin_model->getcheckinoutfields();
@@ -501,6 +556,8 @@
 		 {
 			    $row = 0;
 			    $col = 0;
+			    $fields = array();
+			    $results = array();
 			 
 			    $handle = @fopen($filename, "r");
 			    if ($handle) 
@@ -510,20 +567,21 @@
 			            if (empty($fields)) 
 			            {
 			                $fields = $row;
-			                $columns[] = $row; 
-				                continue;
-				            }
+			                continue;
+			            }
 			 
 			            foreach ($row as $k=>$value) 
 			            {
-			                $results[$col][$fields[$k]] =  htmlentities($value, ENT_QUOTES, 'UTF-8');
+			                if (isset($fields[$k])) {
+			                    $results[$col][$fields[$k]] =  htmlentities($value, ENT_QUOTES, 'UTF-8');
+			                }
 			            }
 			            $col++;
 			            unset($row);
 			        }
 			        if (!feof($handle)) 
 			        {
-			            echo "Error: unexpected fgets() failn";
+			            log_message('error', '[UPLOAD ATTENDANCE] CSV Import: unexpected fgetcsv() fail on file ' . $filename);
 			        }
 			        fclose($handle);
 			    }

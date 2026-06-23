@@ -159,7 +159,19 @@
 			    var fileName = args.file;
 			    var serverResponce = args.response;
 
-			    obj = JSON.parse(serverResponce);
+			    try {
+			        obj = JSON.parse(serverResponce);
+			    } catch (e) {
+			        showmessage('Invalid server response.', 'danger');
+			        $('#label_fields').hide();
+			        return;
+			    }
+
+			    if (obj.status === 'error') {
+			        showmessage(obj.message || 'Upload failed.', 'danger');
+			        $('#label_fields').hide();
+			        return;
+			    }
 
 			    checkinoutfields = obj['checkinoutfields'];
 

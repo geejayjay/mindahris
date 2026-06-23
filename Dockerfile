@@ -42,9 +42,9 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . .
 
-# Ensure CodeIgniter cache and logs are writable
-RUN mkdir -p application/cache application/logs \
-    && chmod -R 777 application/cache application/logs \
+# Ensure CodeIgniter cache, logs, and asset upload directories are writable and exist
+RUN mkdir -p application/cache application/logs assets/import assets/attachments assets/profiles assets/esignatures \
+    && chmod -R 777 application/cache application/logs assets/import assets/attachments assets/profiles assets/esignatures \
     && chown -R www-data:www-data /var/www/html
 
 # Update Apache to listen on the dynamic PORT provided by the hosting platform (defaulting to 9003)
