@@ -4,6 +4,12 @@ FROM centos:7
 RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*.repo && \
     sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*.repo
 
+# Install EPEL repository for additional packages (php-mcrypt, php-mssql, freetds)
+RUN yum install -y epel-release && \
+    sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/epel*.repo && \
+    sed -i 's|#baseurl=http://download.fedoraproject.org|baseurl=http://archives.fedoraproject.org|g' /etc/yum.repos.d/epel*.repo && \
+    sed -i 's|metalink|#metalink|g' /etc/yum.repos.d/epel*.repo
+
 # Install Apache, PHP 5.4 (CentOS 7 default), and required extensions
 RUN yum update -y && yum install -y \
     httpd \
