@@ -40,7 +40,7 @@
 				} else {
 					if ($is_debug) {
 						log_message('debug', '[LOGIN] Step 3: User found. Column names from authorizeUser: ' . implode(', ', array_keys((array) $query[0])));
-						log_message('debug', '[LOGIN] Step 3b: username value = ' . ($query[0]->username ?? 'NULL'));
+						log_message('debug', '[LOGIN] Step 3b: username value = ' . (isset($query[0]->username) ? $query[0]->username : 'NULL'));
 					}
 
 					$DB2 = $this->load->database('sqlserver', TRUE);
@@ -95,7 +95,7 @@
 
 							if ($is_debug) {
 								log_message('debug', '[LOGIN] Step 7: Normalized column names: ' . implode(', ', array_keys((array) $row)));
-								log_message('debug', '[LOGIN] Step 7b: employee_id=' . ($row->employee_id ?? 'NULL') . ', username=' . ($row->username ?? 'NULL'));
+								log_message('debug', '[LOGIN] Step 7b: employee_id=' . (isset($row->employee_id) ? $row->employee_id : 'NULL') . ', username=' . (isset($row->username) ? $row->username : 'NULL'));
 							}
 
 							// create session
@@ -272,10 +272,10 @@
 			echo 'CI_ENV: ' . ENVIRONMENT . "\n";
 			echo 'DB_DRIVER: ' . (getenv('DB_DRIVER') ?: 'not set') . "\n";
 			echo 'SESS_SAVE_PATH env: ' . (getenv('SESS_SAVE_PATH') ?: 'not set') . "\n";
-			echo 'SERVER_NAME: ' . ($_SERVER['SERVER_NAME'] ?? 'not set') . "\n";
-			echo 'HTTP_HOST: ' . ($_SERVER['HTTP_HOST'] ?? 'not set') . "\n";
-			echo 'REQUEST_SCHEME: ' . ($_SERVER['REQUEST_SCHEME'] ?? 'not set') . "\n";
-			echo 'HTTPS: ' . ($_SERVER['HTTPS'] ?? 'not set') . "\n";
+			echo 'SERVER_NAME: ' . (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'not set') . "\n";
+			echo 'HTTP_HOST: ' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'not set') . "\n";
+			echo 'REQUEST_SCHEME: ' . (isset($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : 'not set') . "\n";
+			echo 'HTTPS: ' . (isset($_SERVER['HTTPS']) ? $_SERVER['HTTPS'] : 'not set') . "\n";
 			echo '</pre>';
 
 			// 8. Database Listing Diagnostic

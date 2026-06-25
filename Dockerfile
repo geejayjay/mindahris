@@ -6,6 +6,7 @@ RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*.repo && \
 
 # Install EPEL repository for additional packages (php-mcrypt, php-mssql, freetds)
 RUN yum install -y epel-release && \
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 && \
     rm -f /etc/yum.repos.d/epel*.repo && \
     printf "[epel]\nname=Extra Packages for Enterprise Linux 7 - \$basearch\nbaseurl=https://archives.fedoraproject.org/pub/archive/epel/7/\$basearch/\nenabled=1\ngpgcheck=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7\n" > /etc/yum.repos.d/epel.repo
 
