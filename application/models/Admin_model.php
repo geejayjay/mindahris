@@ -1025,7 +1025,7 @@ Class Admin_model extends CI_Model{
 
 
 					                      foreach ($fieldmap as $row => $r){
-						        					$query.= $$r['checkinout'].',';
+						        					$query.= ${$r['checkinout']}.',';
 						        		  }
 
 										  $query.=  $DB2->escape($area_id) . '';
@@ -1101,7 +1101,7 @@ Class Admin_model extends CI_Model{
 							   		 		 $query.='(';
 													
 					                      foreach ($fieldmap as $row => $r){
-						        			$query.= $$r['checkinout'].',';
+						        			$query.= ${$r['checkinout']}.',';
 						        		  }	
 													
 										 $query.=  $DB2->escape($area_id) . '';
@@ -1179,7 +1179,7 @@ Class Admin_model extends CI_Model{
 
 
 					                      foreach ($fieldmap as $row => $r){
-						        					$query.= $$r['checkinout'].',';
+						        					$query.= ${$r['checkinout']}.',';
 						        		  }
 
 										  $query.=  $DB2->escape($area_id) . '';
