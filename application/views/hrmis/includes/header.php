@@ -75,9 +75,9 @@
 	<!-- end alvin js --> 
 
     <!--script src="//js.pusher.com/2.2/pusher.min.js"></script>
-    <script type="text/javascript" src="<?php //echo base_url(); ?>assets/js/pushernotifier.js"></script>
-    <script type="text/javascript" src="<?php //echo base_url(); ?>assets/js/bootstrap-notify.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js"></script-->
+    <script type="text/javascript" src="<?php //echo base_url(); ?>assets/js/pushernotifier.js"></script-->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap-notify.min.js"></script>
+    <!--script src="//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js"></script-->
 
 
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/jqwidgets/jqxcore.js"></script>
